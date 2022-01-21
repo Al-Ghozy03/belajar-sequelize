@@ -3,12 +3,8 @@ const app = express()
 const dotenv = require("dotenv")
 dotenv.config()
 const port = process.env.PORT || 8000
+const router = require("./routes/router")
 
-app.get("/",(req,res)=>{
-    res.json({
-        message:"mancing mania mantap",
-
-    })
-})
-
-app.listen(port)
+app.use(express.json())
+app.use(router)
+app.listen(port,()=>console.log(`berjalan di ${port}`))
